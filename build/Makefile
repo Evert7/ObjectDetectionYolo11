@@ -57,10 +57,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hvant/ObjectDetectionCPP
+CMAKE_SOURCE_DIR = /home/hvant/ObjectDetectionYolo11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hvant/ObjectDetectionCPP/build
+CMAKE_BINARY_DIR = /home/hvant/ObjectDetectionYolo11/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionCPP/build/CMakeFiles /home/hvant/ObjectDetectionCPP/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionYolo11/build/CMakeFiles /home/hvant/ObjectDetectionYolo11/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionCPP/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionYolo11/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,29 +129,29 @@ yolo11_detector/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/build
 .PHONY : yolo11_detector/fast
 
-src/video_inference.o: src/video_inference.cpp.o
-.PHONY : src/video_inference.o
+src/image_inference.o: src/image_inference.cpp.o
+.PHONY : src/image_inference.o
 
 # target to build an object file
-src/video_inference.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o
-.PHONY : src/video_inference.cpp.o
+src/image_inference.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o
+.PHONY : src/image_inference.cpp.o
 
-src/video_inference.i: src/video_inference.cpp.i
-.PHONY : src/video_inference.i
+src/image_inference.i: src/image_inference.cpp.i
+.PHONY : src/image_inference.i
 
 # target to preprocess a source file
-src/video_inference.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.i
-.PHONY : src/video_inference.cpp.i
+src/image_inference.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.i
+.PHONY : src/image_inference.cpp.i
 
-src/video_inference.s: src/video_inference.cpp.s
-.PHONY : src/video_inference.s
+src/image_inference.s: src/image_inference.cpp.s
+.PHONY : src/image_inference.s
 
 # target to generate assembly for a file
-src/video_inference.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.s
-.PHONY : src/video_inference.cpp.s
+src/image_inference.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.s
+.PHONY : src/image_inference.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... yolo11_detector"
-	@echo "... src/video_inference.o"
-	@echo "... src/video_inference.i"
-	@echo "... src/video_inference.s"
+	@echo "... src/image_inference.o"
+	@echo "... src/image_inference.i"
+	@echo "... src/image_inference.s"
 .PHONY : help
 
 

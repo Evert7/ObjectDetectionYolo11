@@ -54,10 +54,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hvant/ObjectDetectionCPP
+CMAKE_SOURCE_DIR = /home/hvant/ObjectDetectionYolo11
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hvant/ObjectDetectionCPP/build
+CMAKE_BINARY_DIR = /home/hvant/ObjectDetectionYolo11/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/yolo11_detector.dir/clean
 CMakeFiles/yolo11_detector.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hvant/ObjectDetectionCPP/build/CMakeFiles --progress-num=1,2 "Built target yolo11_detector"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hvant/ObjectDetectionYolo11/build/CMakeFiles --progress-num=1,2 "Built target yolo11_detector"
 .PHONY : CMakeFiles/yolo11_detector.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/yolo11_detector.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionCPP/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionYolo11/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/yolo11_detector.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionCPP/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hvant/ObjectDetectionYolo11/build/CMakeFiles 0
 .PHONY : CMakeFiles/yolo11_detector.dir/rule
 
 # Convenience name for target.

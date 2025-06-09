@@ -15,8 +15,8 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 
 # add_executable(yolo11_detector src/main.cpp)    # main.cpp
-# add_executable(yolo11_detector src/image_inference.cpp)   # image_inference.cpp
-add_executable(yolo11_detector src/video_inference.cpp)   # image_inference.cpp
+add_executable(yolo11_detector src/image_inference.cpp)   # image_inference.cpp
+# add_executable(yolo11_detector src/video_inference.cpp)   # image_inference.cpp
 # add_executable(yolo11_detector src/camera_inference.cpp)   # image_inference.cpp
 
 

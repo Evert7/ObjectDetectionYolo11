@@ -1,5 +1,5 @@
-CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: \
- /home/hvant/ObjectDetectionCPP/src/video_inference.cpp \
+CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o: \
+ /home/hvant/ObjectDetectionYolo11/src/image_inference.cpp \
  /usr/include/stdc-predef.h \
  /usr/local/include/opencv4/opencv2/highgui/highgui.hpp \
  /usr/local/include/opencv4/opencv2/highgui.hpp \
@@ -259,13 +259,8 @@ CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: \
  /usr/local/include/opencv4/opencv2/core/cvdef.h \
  /usr/local/include/opencv4/opencv2/imgcodecs.hpp \
  /usr/local/include/opencv4/opencv2/videoio.hpp \
- /usr/include/c++/12/iostream /usr/include/c++/12/thread \
- /usr/include/c++/12/bits/std_thread.h \
- /usr/include/c++/12/bits/this_thread_sleep.h /usr/include/c++/12/queue \
- /usr/include/c++/12/deque /usr/include/c++/12/bits/stl_deque.h \
- /usr/include/c++/12/bits/deque.tcc /usr/include/c++/12/bits/stl_queue.h \
- /usr/include/c++/12/atomic /usr/include/c++/12/condition_variable \
- /home/hvant/ObjectDetectionCPP/src/YOLO11.hpp \
+ /usr/include/c++/12/iostream \
+ /home/hvant/ObjectDetectionYolo11/src/YOLO11.hpp \
  /home/hvant/onnxruntime-linux-x64-1.17.0/include/onnxruntime_cxx_api.h \
  /home/hvant/onnxruntime-linux-x64-1.17.0/include/onnxruntime_c_api.h \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h \
@@ -357,6 +352,9 @@ CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: \
  /usr/include/c++/12/list /usr/include/c++/12/bits/stl_list.h \
  /usr/include/c++/12/bits/list.tcc \
  /usr/local/include/opencv4/opencv2/stitching/detail/util_inl.hpp \
+ /usr/include/c++/12/queue /usr/include/c++/12/deque \
+ /usr/include/c++/12/bits/stl_deque.h /usr/include/c++/12/bits/deque.tcc \
+ /usr/include/c++/12/bits/stl_queue.h \
  /usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp \
  /usr/local/include/opencv4/opencv2/stitching/detail/exposure_compensate.hpp \
  /usr/local/include/opencv4/opencv2/stitching/detail/seam_finders.hpp \
@@ -373,7 +371,9 @@ CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: \
  /usr/include/c++/12/pstl/glue_numeric_defs.h /usr/include/c++/12/random \
  /usr/include/c++/12/bits/random.h \
  /usr/include/x86_64-linux-gnu/c++/12/bits/opt_random.h \
- /usr/include/c++/12/bits/random.tcc \
- /home/hvant/ObjectDetectionCPP/src/../tools/Debug.hpp \
- /home/hvant/ObjectDetectionCPP/src/../tools/Config.hpp \
- /home/hvant/ObjectDetectionCPP/src/../tools/ScopedTimer.hpp
+ /usr/include/c++/12/bits/random.tcc /usr/include/c++/12/thread \
+ /usr/include/c++/12/bits/std_thread.h \
+ /usr/include/c++/12/bits/this_thread_sleep.h \
+ /home/hvant/ObjectDetectionYolo11/src/../tools/Debug.hpp \
+ /home/hvant/ObjectDetectionYolo11/src/../tools/Config.hpp \
+ /home/hvant/ObjectDetectionYolo11/src/../tools/ScopedTimer.hpp

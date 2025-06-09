@@ -1,3 +1,3 @@
-/home/hvant/ObjectDetectionCPP/build/CMakeFiles/yolo11_detector.dir
-/home/hvant/ObjectDetectionCPP/build/CMakeFiles/edit_cache.dir
-/home/hvant/ObjectDetectionCPP/build/CMakeFiles/rebuild_cache.dir
+/home/hvant/ObjectDetectionYolo11/build/CMakeFiles/yolo11_detector.dir
+/home/hvant/ObjectDetectionYolo11/build/CMakeFiles/edit_cache.dir
+/home/hvant/ObjectDetectionYolo11/build/CMakeFiles/rebuild_cache.dir
