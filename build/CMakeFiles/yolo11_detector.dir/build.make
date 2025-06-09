@@ -69,28 +69,28 @@ include CMakeFiles/yolo11_detector.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/yolo11_detector.dir/flags.make
 
-CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o: CMakeFiles/yolo11_detector.dir/flags.make
-CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o: /home/hvant/ObjectDetectionYolo11/src/image_inference.cpp
-CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o: CMakeFiles/yolo11_detector.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hvant/ObjectDetectionYolo11/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o -MF CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o.d -o CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o -c /home/hvant/ObjectDetectionYolo11/src/image_inference.cpp
+CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: CMakeFiles/yolo11_detector.dir/flags.make
+CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: /home/hvant/ObjectDetectionYolo11/src/video_inference.cpp
+CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: CMakeFiles/yolo11_detector.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hvant/ObjectDetectionYolo11/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o -MF CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o.d -o CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o -c /home/hvant/ObjectDetectionYolo11/src/video_inference.cpp
 
-CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hvant/ObjectDetectionYolo11/src/image_inference.cpp > CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.i
+CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hvant/ObjectDetectionYolo11/src/video_inference.cpp > CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.i
 
-CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hvant/ObjectDetectionYolo11/src/image_inference.cpp -o CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.s
+CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hvant/ObjectDetectionYolo11/src/video_inference.cpp -o CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.s
 
 # Object files for target yolo11_detector
 yolo11_detector_OBJECTS = \
-"CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o"
+"CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o"
 
 # External object files for target yolo11_detector
 yolo11_detector_EXTERNAL_OBJECTS =
 
-yolo11_detector: CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o
+yolo11_detector: CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o
 yolo11_detector: CMakeFiles/yolo11_detector.dir/build.make
 yolo11_detector: /usr/local/lib/libopencv_gapi.so.4.7.0
 yolo11_detector: /usr/local/lib/libopencv_stitching.so.4.7.0

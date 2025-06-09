@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/hvant/ObjectDetectionYolo11/src/image_inference.cpp" "CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o" "gcc" "CMakeFiles/yolo11_detector.dir/src/image_inference.cpp.o.d"
+  "/home/hvant/ObjectDetectionYolo11/src/video_inference.cpp" "CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o" "gcc" "CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
