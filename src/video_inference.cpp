@@ -95,6 +95,11 @@ int main()
     const std::string outputPath = "../data/classroom_output.mp4"; // Output video path
     const std::string modelPath = "../models/yolo11n.onnx"; 
 
+    // Flags for drawing warnings on the video output
+    bool pedestrianDetected;
+    bool vehicleDetected;
+    int i = 0;
+
 
     // Initialize the YOLO detector
     bool isGPU = true; // Set to false for CPU processing
@@ -152,6 +157,39 @@ int main()
         {
             // Detect objects in the frame
             std::vector<Detection> results = detector.detect(frame);
+
+            vehicleDetected = false;
+            pedestrianDetected = false;
+            int indexToRemove = 0;
+
+            for (const auto& det : results) {
+                if (det.classId == 0) {
+                    // std::cout << "Detected: person" << std::endl;
+                    pedestrianDetected = true;
+                } else if (det.classId == 2 || det.classId == 3 || det.classId == 5 || det.classId == 7) {
+                    // std::cout << "Detected: vehicle" << std::endl;
+                    vehicleDetected = true;
+                } else {
+                    if (indexToRemove >= 0 && indexToRemove < results.size()) {
+                        results.erase(results.begin() + indexToRemove);
+                        indexToRemove -= 1;
+                    }
+                }
+                indexToRemove += 1;
+            }
+
+            // Draw warnings on the frame
+            int fontFace = cv::FONT_HERSHEY_SIMPLEX;
+            double fontScale = 0.7;
+            int thickness = 2;
+
+            if (pedestrianDetected && vehicleDetected) {
+                cv::putText(frame, "Warning: Pedestrian and Vehicle Detected", cv::Point(10, 60), fontFace, fontScale, cv::Scalar(255, 0, 0), thickness);
+            } else if (pedestrianDetected) {
+                cv::putText(frame, "Warning: Pedestrian Detected", cv::Point(10, 30), fontFace, fontScale, cv::Scalar(0, 0, 255), thickness);
+            } else if (vehicleDetected) {
+                cv::putText(frame, "Warning: Vehicle Detected", cv::Point(10, 60), fontFace, fontScale, cv::Scalar(255, 0, 0), thickness);
+            }
 
             // Draw bounding boxes on the frame
             detector.drawBoundingBoxMask(frame, results); // Uncomment for mask drawing
