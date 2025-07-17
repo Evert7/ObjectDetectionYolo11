@@ -41,6 +41,7 @@
 #include <opencv2/videoio.hpp>
 #include <iostream>
 #include <string>
+#include <vector>
 #include <thread>
 #include <queue>
 #include <mutex>
@@ -138,6 +139,8 @@ int main()
     // float u_vel = 0;
     // float v_vel = 0;
     // float s__vel = 0;
+    int testingCounter = 0;
+    std::vector<Tracker> trackers;  // vector to store all active trackers
 
     // Open the video file
     cv::VideoCapture cap(videoPath);
@@ -218,6 +221,28 @@ int main()
             float v_meas = det.box.y + (det.box.height / 2);        // y + h / 2.0;     vertical pixel location of the centre of the target
             float s_meas = det.box.width * det.box.height;          // w * h;           scale (area of bounding box)
             float r_meas = det.box.width / float(det.box.height);   // w / h            aspect ratio    
+
+            if (testingCounter < 10){
+                std::vector<float> detection = {u_meas, v_meas, s_meas, r_meas};
+                Tracker newTracker(detection);
+                int identity = newTracker.getID();
+                trackers.push_back(newTracker);
+                std::cout<<"Successfuly created Tracker with id: "<<identity<<std::endl;
+                testingCounter++;
+            }
+        }
+
+        // Loop through all the trackers and increase the age of each one, if the age is above the threshold it should be deleted
+        int TrackerToDelete = 0;
+        for (auto& tracker : trackers){
+            if (TrackerToDelete == 0) {tracker.setAge(1);}
+            int age = tracker.getAge();
+            std::cout<<"Tracker with id: "<<tracker.getID()<<" has an age of "<<age<<std::endl;
+            if (age >= TLostFrames) {
+                trackers.erase(trackers.begin() + TrackerToDelete--); 
+            }
+            tracker.increaseAge();
+            TrackerToDelete++;
         }
 
         // Draw warnings on the frame
