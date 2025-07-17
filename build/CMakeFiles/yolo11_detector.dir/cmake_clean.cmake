@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/yolo11_detector.dir/src/Tracker.cpp.o"
+  "CMakeFiles/yolo11_detector.dir/src/Tracker.cpp.o.d"
   "CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o"
   "CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o.d"
   "yolo11_detector"

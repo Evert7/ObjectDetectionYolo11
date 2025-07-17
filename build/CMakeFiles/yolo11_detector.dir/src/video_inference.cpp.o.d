@@ -376,4 +376,5 @@ CMakeFiles/yolo11_detector.dir/src/video_inference.cpp.o: \
  /usr/include/c++/12/bits/random.tcc \
  /home/hvant/ObjectDetectionYolo11/src/../tools/Debug.hpp \
  /home/hvant/ObjectDetectionYolo11/src/../tools/Config.hpp \
- /home/hvant/ObjectDetectionYolo11/src/../tools/ScopedTimer.hpp
+ /home/hvant/ObjectDetectionYolo11/src/../tools/ScopedTimer.hpp \
+ /home/hvant/ObjectDetectionYolo11/src/Tracker.hpp

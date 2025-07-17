@@ -47,6 +47,7 @@
 #include <atomic>
 #include <condition_variable>
 #include "YOLO11.hpp" 
+#include "Tracker.hpp"
 
 
 // Thread-safe queue implementation
@@ -80,12 +81,37 @@ public:
         c.notify_all();
     }
 
+
 private:
     std::queue<T> q;
     mutable std::mutex m;
     std::condition_variable c;
     bool finished = false;
+
 };
+
+
+struct Track
+{
+    /* Struct to represent a Track */
+    // KalmanFilter kf;
+    int ID;
+    int age;
+    int visbleCount;
+    int invisibleCount;
+    std::vector<int> objectState;
+
+};
+
+
+
+// std::vector<int> Identity; 
+// std::vector<Identity> Identities;
+
+int IOUmin = 50;
+int TLostFrames = 3;
+
+
 
 int main()
 {
@@ -100,11 +126,18 @@ int main()
     bool vehicleDetected;
     int i = 0;
 
-
     // Initialize the YOLO detector
     bool isGPU = true; // Set to false for CPU processing
     YOLO11Detector detector(modelPath, labelsPath, isGPU); 
 
+    // // Tracking Parameters        
+    // float u_meas;
+    // float v_meas;
+    // float s_meas;
+    // float r_meas;
+    // float u_vel = 0;
+    // float v_vel = 0;
+    // float s__vel = 0;
 
     // Open the video file
     cv::VideoCapture cap(videoPath);
@@ -151,53 +184,62 @@ int main()
 
     // Processing thread
     std::thread processingThread([&]() {
-        cv::Mat frame;
-        int frameIndex = 0;
-        while (frameQueue.dequeue(frame))
-        {
-            // Detect objects in the frame
-            std::vector<Detection> results = detector.detect(frame);
+    cv::Mat frame;
+    int frameIndex = 0;
+    while (frameQueue.dequeue(frame))
+    {
+        // Detect objects in the frame
+        std::vector<Detection> results = detector.detect(frame);
 
-            vehicleDetected = false;
-            pedestrianDetected = false;
-            int indexToRemove = 0;
 
-            for (const auto& det : results) {
-                if (det.classId == 0) {
-                    // std::cout << "Detected: person" << std::endl;
-                    pedestrianDetected = true;
-                } else if (det.classId == 2 || det.classId == 3 || det.classId == 5 || det.classId == 7) {
-                    // std::cout << "Detected: vehicle" << std::endl;
-                    vehicleDetected = true;
-                } else {
-                    if (indexToRemove >= 0 && indexToRemove < results.size()) {
-                        results.erase(results.begin() + indexToRemove);
-                        indexToRemove -= 1;
-                    }
+        vehicleDetected = false;
+        pedestrianDetected = false;
+        int indexToRemove = 0;
+
+        for (const auto& det : results) {
+
+            // Filter out all the pedestrians and vehicles
+            if (det.classId == 0) {
+                // std::cout << "Detected: person" << std::endl;
+                pedestrianDetected = true;
+            } else if (det.classId == 2 || det.classId == 3 || det.classId == 5 || det.classId == 7) {
+                // std::cout << "Detected: vehicle" << std::endl;
+                vehicleDetected = true;
+            } else {
+                if (indexToRemove >= 0 && indexToRemove < results.size()) {
+                    results.erase(results.begin() + indexToRemove);
+                    indexToRemove -= 1;
                 }
-                indexToRemove += 1;
             }
+            indexToRemove += 1;
 
-            // Draw warnings on the frame
-            int fontFace = cv::FONT_HERSHEY_SIMPLEX;
-            double fontScale = 0.7;
-            int thickness = 2;
 
-            if (pedestrianDetected && vehicleDetected) {
-                cv::putText(frame, "Warning: Pedestrian and Vehicle Detected", cv::Point(10, 60), fontFace, fontScale, cv::Scalar(255, 0, 0), thickness);
-            } else if (pedestrianDetected) {
-                cv::putText(frame, "Warning: Pedestrian Detected", cv::Point(10, 30), fontFace, fontScale, cv::Scalar(0, 0, 255), thickness);
-            } else if (vehicleDetected) {
-                cv::putText(frame, "Warning: Vehicle Detected", cv::Point(10, 60), fontFace, fontScale, cv::Scalar(255, 0, 0), thickness);
-            }
-
-            // Draw bounding boxes on the frame
-            detector.drawBoundingBoxMask(frame, results); // Uncomment for mask drawing
-
-            // Enqueue the processed frame
-            processedQueue.enqueue(std::make_pair(frameIndex++, frame));
+            float u_meas = det.box.x + (det.box.width / 2);         // x + w / 2.0;     horizontal pixel location of the centre of the target
+            float v_meas = det.box.y + (det.box.height / 2);        // y + h / 2.0;     vertical pixel location of the centre of the target
+            float s_meas = det.box.width * det.box.height;          // w * h;           scale (area of bounding box)
+            float r_meas = det.box.width / float(det.box.height);   // w / h            aspect ratio    
         }
-        processedQueue.setFinished();
+
+        // Draw warnings on the frame
+        int fontFace = cv::FONT_HERSHEY_SIMPLEX;
+        double fontScale = 0.7;
+        int thickness = 2;
+
+        if (pedestrianDetected && vehicleDetected) {
+            cv::putText(frame, "Warning: Pedestrian and Vehicle Detected", cv::Point(10, 60), fontFace, fontScale, cv::Scalar(255, 0, 0), thickness);
+        } else if (pedestrianDetected) {
+            cv::putText(frame, "Warning: Pedestrian Detected", cv::Point(10, 30), fontFace, fontScale, cv::Scalar(0, 0, 255), thickness);
+        } else if (vehicleDetected) {
+            cv::putText(frame, "Warning: Vehicle Detected", cv::Point(10, 60), fontFace, fontScale, cv::Scalar(255, 0, 0), thickness);
+        }
+
+        // Draw bounding boxes on the frame
+        detector.drawBoundingBoxMask(frame, results); // Uncomment for mask drawing
+
+        // Enqueue the processed frame
+        processedQueue.enqueue(std::make_pair(frameIndex++, frame));
+    }
+    processedQueue.setFinished();
     });
 
     // Writing thread

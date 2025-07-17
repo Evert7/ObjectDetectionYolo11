@@ -129,6 +129,30 @@ yolo11_detector/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/build
 .PHONY : yolo11_detector/fast
 
+src/Tracker.o: src/Tracker.cpp.o
+.PHONY : src/Tracker.o
+
+# target to build an object file
+src/Tracker.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/Tracker.cpp.o
+.PHONY : src/Tracker.cpp.o
+
+src/Tracker.i: src/Tracker.cpp.i
+.PHONY : src/Tracker.i
+
+# target to preprocess a source file
+src/Tracker.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/Tracker.cpp.i
+.PHONY : src/Tracker.cpp.i
+
+src/Tracker.s: src/Tracker.cpp.s
+.PHONY : src/Tracker.s
+
+# target to generate assembly for a file
+src/Tracker.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/yolo11_detector.dir/build.make CMakeFiles/yolo11_detector.dir/src/Tracker.cpp.s
+.PHONY : src/Tracker.cpp.s
+
 src/video_inference.o: src/video_inference.cpp.o
 .PHONY : src/video_inference.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... yolo11_detector"
+	@echo "... src/Tracker.o"
+	@echo "... src/Tracker.i"
+	@echo "... src/Tracker.s"
 	@echo "... src/video_inference.o"
 	@echo "... src/video_inference.i"
 	@echo "... src/video_inference.s"
