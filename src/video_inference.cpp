@@ -220,7 +220,19 @@ int main()
             float u_meas = det.box.x + (det.box.width / 2);         // x + w / 2.0;     horizontal pixel location of the centre of the target
             float v_meas = det.box.y + (det.box.height / 2);        // y + h / 2.0;     vertical pixel location of the centre of the target
             float s_meas = det.box.width * det.box.height;          // w * h;           scale (area of bounding box)
-            float r_meas = det.box.width / float(det.box.height);   // w / h            aspect ratio    
+            float r_meas = det.box.width / float(det.box.height);   // w / h            aspect ratio 
+            
+            
+            // (buite) Predict al die states van die trackers met die kalman filter
+            // Kyk of die bb ooreenstem met n tracker deur gebruik te maak van hungarian metode
+                // As hy ooreenstem
+                    // Stel die age na 0 toe 
+                    // Update die KF se state met die measurements 
+
+                // As hy nie ooreenstem nie
+                    // Begin n nuwe tracker ID
+
+
 
             if (testingCounter < 10){
                 std::vector<float> detection = {u_meas, v_meas, s_meas, r_meas};
@@ -233,17 +245,33 @@ int main()
         }
 
         // Loop through all the trackers and increase the age of each one, if the age is above the threshold it should be deleted
-        int TrackerToDelete = 0;
-        for (auto& tracker : trackers){
-            if (TrackerToDelete == 0) {tracker.setAge(1);}
-            int age = tracker.getAge();
-            std::cout<<"Tracker with id: "<<tracker.getID()<<" has an age of "<<age<<std::endl;
-            if (age >= TLostFrames) {
-                trackers.erase(trackers.begin() + TrackerToDelete--); 
+        // int TrackerToDelete = 0;
+        // for (auto& tracker : trackers){
+        //     if (TrackerToDelete == 0) {tracker.setAge(1);}
+        //     int age = tracker.getAge();
+        //     std::cout<<"Tracker with id: "<<tracker.getID()<<" has an age of "<<age<<std::endl;
+        //     if (age >= TLostFrames) {
+        //         trackers.erase(trackers.begin() + TrackerToDelete); 
+        //     } else {
+        //         tracker.increaseAge();
+        //         TrackerToDelete++;
+        //     }
+        
+        // }
+
+        // verander die loop dat hy reg werk
+        for (int i = trackers.size() - 1; i >= 0; --i) {
+            if (i == 0) {trackers[i].setAge(1);}
+            int age = trackers[i].getAge();
+            std::cout<<"Tracker with id: "<<trackers[i].getID()<<" has an age of "<<age<<std::endl;
+            if (trackers[i].getAge() >= TLostFrames) {
+                std::cout << "Deleting tracker with id: " << trackers[i].getID() << std::endl;
+                trackers.erase(trackers.begin() + i);
+            } else {
+                trackers[i].increaseAge();
             }
-            tracker.increaseAge();
-            TrackerToDelete++;
         }
+
 
         // Draw warnings on the frame
         int fontFace = cv::FONT_HERSHEY_SIMPLEX;
